@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package sec04;
+
+import "sec04/common/address.proto";
+import "sec04/common/car.proto";
+
+option java_multiple_files = true;
+// Protobuf 컴파일러(protoc)가 .proto 파일을 자바 코드로 변환할 때 사용할 패키지 이름
+option java_package = "dev.poporo.models.sec04";
+
+message Person {
+
+  string last_name = 1;
+  int32 age = 2;
+  sec04.common.Address address = 3;
+  sec04.common.Car car = 4;
+}

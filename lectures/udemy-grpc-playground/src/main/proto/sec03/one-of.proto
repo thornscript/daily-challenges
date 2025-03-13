@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package sec03;
+
+option java_multiple_files = true;
+// Protobuf 컴파일러(protoc)가 .proto 파일을 자바 코드로 변환할 때 사용할 패키지 이름
+option java_package = "dev.poporo.models.sec03";
+
+message Email {
+  string address = 1;
+  string password = 2;
+}
+
+message Phone {
+  int32 number = 1;
+  int32 code = 2;
+}
+
+message Credentials {
+  oneof login_type {
+    Email email = 1;
+    Phone phone = 2;
+  }
+}

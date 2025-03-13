@@ -1,0 +1,57 @@
+plugins {
+    id 'java'
+    id 'com.google.protobuf' version '0.9.4'
+}
+
+group = 'dev.poporo'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+def grpcVersion = '1.70.0'
+def logbackVersion = '1.5.17'
+def jacksonVersion = '2.18.3'
+def protobufVersion = '4.29.3'
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+
+    // gRPC / Protobuf
+    implementation "io.grpc:grpc-netty-shaded:${grpcVersion}"
+    implementation "io.grpc:grpc-protobuf:${grpcVersion}" // gRPC 기본
+    implementation "io.grpc:grpc-stub:${grpcVersion}"     // 클라이언트 코드용
+    implementation "com.google.protobuf:protobuf-java:${protobufVersion}"
+
+    compileOnly 'org.apache.tomcat:annotations-api:6.0.53'
+
+    // Logback
+    implementation "ch.qos.logback:logback-classic:${logbackVersion}"
+
+    // Jackson
+    implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonVersion}"
+}
+
+protobuf {
+    protoc {
+        // Maven Central에서 protoc을 자동으로 다운로드함
+        // https://mvnrepository.com/artifact/com.google.protobuf/protoc
+        artifact = "com.google.protobuf:protoc:${protobufVersion}"
+    }
+    plugins {
+        grpc {
+            artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}"
+        }
+    }
+    generateProtoTasks {
+        all()*.plugins {
+            grpc {}
+        }
+    }
+}
+
+test {
+    useJUnitPlatform()
+}

@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package sec03;
+
+option java_multiple_files = true;
+// Protobuf 컴파일러(protoc)가 .proto 파일을 자바 코드로 변환할 때 사용할 패키지 이름
+option java_package = "dev.poporo.models.sec03";
+
+enum BodyStyle {
+  SEDAN = 0;
+  COUPE = 1;
+  SUV = 2;
+}
+
+message Car {
+  string make = 1;
+  string model = 2;
+  int32 year = 3;
+  BodyStyle body_style = 4;
+}
+
+message Dealer {
+  map<int32, Car> inventory = 1;
+}
