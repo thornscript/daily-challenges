@@ -3,10 +3,14 @@ package dev.poporo.course.ch04.datasource.fake;
 import com.netflix.dgs.codegen.generated.types.Address;
 import com.netflix.dgs.codegen.generated.types.Author;
 import com.netflix.dgs.codegen.generated.types.MobileApp;
+import com.netflix.dgs.codegen.generated.types.MobileAppCategory;
 import jakarta.annotation.PostConstruct;
 import java.net.MalformedURLException;
+import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 import net.datafaker.Faker;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,11 +36,11 @@ public class FakeMobileAppDataSource {
                     .name(faker.app().name())
                     .author(author).version(faker.app().version())
                     .platform(randomMobileAppPlatform())
-                    // .appId(UUID.randomUUID().toString())
-                    // .releaseDate(LocalDate.now().minusDays(faker.random().nextInt(365)))
-                    // .downloaded(faker.number().numberBetween(1, 1_500_000))
-                    // .homepage(new URL("https://" + faker.internet().url()))
-                    // .category(MobileAppCategory.values()[faker.random().nextInt(MobileAppCategory.values().length)])
+                    .appId(UUID.randomUUID().toString())
+                    .releaseDate(LocalDate.now().minusDays(faker.random().nextInt(365)))
+                    .downloaded(faker.number().numberBetween(1, 1_500_000))
+                    .homepage(new URL("https://" + faker.internet().url()))
+                    .category(MobileAppCategory.values()[faker.random().nextInt(MobileAppCategory.values().length)])
                     .build();
 
             for (int j = 0; j < ThreadLocalRandom.current().nextInt(1, 3); ++j) {

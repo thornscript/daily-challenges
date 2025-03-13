@@ -32,6 +32,7 @@ dependencies {
     implementation platform("com.netflix.graphql.dgs:graphql-dgs-platform-dependencies:${netflixDgsVersion}")
     implementation 'com.netflix.graphql.dgs:graphql-dgs-extended-scalars'
     implementation 'com.netflix.graphql.dgs:graphql-dgs-spring-graphql-starter'
+    implementation 'com.netflix.graphql.dgs:graphql-dgs-subscription-types'
     testImplementation 'com.netflix.graphql.dgs:graphql-dgs-spring-graphql-starter-test'
 
     implementation 'net.datafaker:datafaker:2.4.2'
@@ -45,6 +46,12 @@ dependencyManagement {
 
 generateJava {
     generateClient = true
+    typeMapping = [
+            "Date": "java.time.LocalDate",
+            "NonNegativeInt": "java.lang.Integer",
+            "Url": "java.net.URL",
+            "DateTime": "java.time.OffsetDateTime"
+    ]
 }
 
 tasks.named('test') {

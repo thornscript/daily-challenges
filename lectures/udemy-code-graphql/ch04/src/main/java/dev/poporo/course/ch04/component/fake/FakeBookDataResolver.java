@@ -1,13 +1,11 @@
 package dev.poporo.course.ch04.component.fake;
 
-import com.netflix.dgs.codegen.generated.DgsConstants;
 import com.netflix.dgs.codegen.generated.DgsConstants.QUERY;
 import com.netflix.dgs.codegen.generated.DgsConstants.RELEASEHISTORYINPUT;
 import com.netflix.dgs.codegen.generated.types.Book;
 import com.netflix.dgs.codegen.generated.types.ReleaseHistory;
 import com.netflix.dgs.codegen.generated.types.ReleaseHistoryInput;
 import com.netflix.graphql.dgs.DgsComponent;
-import com.netflix.graphql.dgs.DgsData;
 import com.netflix.graphql.dgs.DgsQuery;
 import com.netflix.graphql.dgs.InputArgument;
 import dev.poporo.course.ch04.datasource.fake.FakeBookDataSource;
