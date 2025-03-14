@@ -6,7 +6,7 @@ type MobileApp {
     appId: ID!
     releaseDate: Date
     downloaded: NonNegativeInt
-    homepage: Url,
+    homepage: Url
     category: MobileAppCategory
 }
 

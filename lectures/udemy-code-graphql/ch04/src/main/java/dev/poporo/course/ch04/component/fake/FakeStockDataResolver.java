@@ -5,7 +5,6 @@ import com.netflix.dgs.codegen.generated.DgsConstants.SUBSCRIPTION;
 import com.netflix.dgs.codegen.generated.types.Stock;
 import com.netflix.graphql.dgs.DgsComponent;
 import com.netflix.graphql.dgs.DgsData;
-import com.netflix.graphql.dgs.DgsSubscription;
 import dev.poporo.course.ch04.datasource.fake.FakeStockDataSource;
 import java.time.Duration;
 import org.reactivestreams.Publisher;
