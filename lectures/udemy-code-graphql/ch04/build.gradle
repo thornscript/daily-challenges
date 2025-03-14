@@ -24,6 +24,7 @@ ext {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
@@ -35,7 +36,13 @@ dependencies {
     implementation 'com.netflix.graphql.dgs:graphql-dgs-subscription-types'
     testImplementation 'com.netflix.graphql.dgs:graphql-dgs-spring-graphql-starter-test'
 
+    runtimeOnly 'org.postgresql:postgresql'
     implementation 'net.datafaker:datafaker:2.4.2'
+    implementation 'org.ocpsoft.prettytime:prettytime:5.0.1.Final'
+    implementation 'org.bouncycastle:bcprov-jdk15on:1.68'
+
+    compileOnly 'org.projectlombok:lombok:1.18.36'
+    annotationProcessor 'org.projectlombok:lombok:1.18.36'
 }
 
 dependencyManagement {
