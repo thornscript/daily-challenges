@@ -1,15 +1,12 @@
 package dev.poporo.course.ch04.component.fake;
 
-import com.netflix.dgs.codegen.generated.DgsConstants;
-import com.netflix.dgs.codegen.generated.DgsConstants.QUERY;
 import com.netflix.dgs.codegen.generated.types.SmartSearchResult;
 import com.netflix.graphql.dgs.DgsComponent;
-import com.netflix.graphql.dgs.DgsData;
 import com.netflix.graphql.dgs.DgsQuery;
 import com.netflix.graphql.dgs.InputArgument;
 import dev.poporo.course.ch04.datasource.fake.FakeBookDataSource;
 import dev.poporo.course.ch04.datasource.fake.FakeHelloDataSource;
-import dev.poporo.course.ch04.utils.StringUtils;
+import dev.poporo.course.ch04.util.StringUtils;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

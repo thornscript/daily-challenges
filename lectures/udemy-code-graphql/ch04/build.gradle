@@ -39,7 +39,7 @@ dependencies {
     runtimeOnly 'org.postgresql:postgresql'
     implementation 'net.datafaker:datafaker:2.4.2'
     implementation 'org.ocpsoft.prettytime:prettytime:5.0.1.Final'
-    implementation 'org.bouncycastle:bcprov-jdk15on:1.68'
+    implementation 'org.bouncycastle:bcprov-jdk18on:1.80'
 
     compileOnly 'org.projectlombok:lombok:1.18.36'
     annotationProcessor 'org.projectlombok:lombok:1.18.36'

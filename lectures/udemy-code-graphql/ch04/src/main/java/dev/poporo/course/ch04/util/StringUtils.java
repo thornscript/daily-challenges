@@ -1,4 +1,4 @@
-package dev.poporo.course.ch04.utils;
+package dev.poporo.course.ch04.util;
 
 public final class StringUtils {
 

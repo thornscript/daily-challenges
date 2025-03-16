@@ -6,6 +6,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.OrderBy;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -31,6 +32,7 @@ public class Problemz {
     private String tags;
 
     @OneToMany(mappedBy = "problemz")
+    @OrderBy("creationTimestamp desc")
     private List<Solutionz> solutions;
 
     @ManyToOne
