@@ -1,8 +1,10 @@
 package dev.poporo.course.ch04.util;
 
 import com.netflix.dgs.codegen.generated.types.Problem;
+import com.netflix.dgs.codegen.generated.types.ProblemCreateInput;
 import com.netflix.dgs.codegen.generated.types.Solution;
 import com.netflix.dgs.codegen.generated.types.SolutionCategory;
+import com.netflix.dgs.codegen.generated.types.SolutionCreateInput;
 import com.netflix.dgs.codegen.generated.types.User;
 import com.netflix.dgs.codegen.generated.types.UserAuthToken;
 import dev.poporo.course.ch04.datasource.problemz.entity.Problemz;
@@ -10,8 +12,10 @@ import dev.poporo.course.ch04.datasource.problemz.entity.Solutionz;
 import dev.poporo.course.ch04.datasource.problemz.entity.Userz;
 import dev.poporo.course.ch04.datasource.problemz.entity.UserzToken;
 import java.time.ZoneOffset;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.UUID;
 import org.ocpsoft.prettytime.PrettyTime;
 
 public class GraphqlBeanMapper {
@@ -82,6 +86,31 @@ public class GraphqlBeanMapper {
 
         result.setAuthToken(original.getAuthToken());
         result.setExpiryTime(expiryDateTime);
+
+        return result;
+    }
+
+    public static Problemz mapToEntity(ProblemCreateInput original, Userz author) {
+        var result = new Problemz();
+
+        result.setContent(original.getContent());
+        result.setCreatedBy(author);
+        result.setId(UUID.randomUUID());
+        result.setSolutions(Collections.emptyList());
+        result.setTags(String.join(",", original.getTags()));
+        result.setTitle(original.getTitle());
+
+        return result;
+    }
+
+    public static Solutionz mapToEntity(SolutionCreateInput original, Userz author, Problemz problemz) {
+        var result = new Solutionz();
+
+        result.setCategory(original.getCategory().name());
+        result.setContent(original.getContent());
+        result.setCreatedBy(author);
+        result.setId(UUID.randomUUID());
+        result.setProblemz(problemz);
 
         return result;
     }
