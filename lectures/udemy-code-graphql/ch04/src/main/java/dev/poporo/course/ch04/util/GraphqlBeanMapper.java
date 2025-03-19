@@ -7,6 +7,7 @@ import com.netflix.dgs.codegen.generated.types.SolutionCategory;
 import com.netflix.dgs.codegen.generated.types.SolutionCreateInput;
 import com.netflix.dgs.codegen.generated.types.User;
 import com.netflix.dgs.codegen.generated.types.UserAuthToken;
+import com.netflix.dgs.codegen.generated.types.UserCreateInput;
 import dev.poporo.course.ch04.datasource.problemz.entity.Problemz;
 import dev.poporo.course.ch04.datasource.problemz.entity.Solutionz;
 import dev.poporo.course.ch04.datasource.problemz.entity.Userz;
@@ -111,6 +112,20 @@ public class GraphqlBeanMapper {
         result.setCreatedBy(author);
         result.setId(UUID.randomUUID());
         result.setProblemz(problemz);
+
+        return result;
+    }
+
+    public static Userz mapToEntity(UserCreateInput original) {
+        var result = new Userz();
+
+        result.setId(UUID.randomUUID());
+        result.setHashedPassword(HashUtil.hashBcrypt(original.getPassword()));
+        result.setUsername(original.getUsername());
+        result.setEmail(original.getEmail());
+        result.setDisplayName(original.getDisplayName());
+        result.setAvatar(original.getAvatar());
+        result.setActive(true);
 
         return result;
     }

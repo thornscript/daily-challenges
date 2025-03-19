@@ -1,5 +1,6 @@
 package dev.poporo.course.ch04.service.command;
 
+import dev.poporo.course.ch04.datasource.problemz.entity.Userz;
 import dev.poporo.course.ch04.datasource.problemz.entity.UserzToken;
 import dev.poporo.course.ch04.datasource.problemz.repository.UserzRepository;
 import dev.poporo.course.ch04.datasource.problemz.repository.UserzTokenRepository;
@@ -7,6 +8,7 @@ import dev.poporo.course.ch04.exception.ProblemzAuthenticationException;
 import dev.poporo.course.ch04.util.HashUtil;
 import dev.poporo.course.ch04.util.RandomStringUtils;
 import java.time.LocalDateTime;
+import java.util.Optional;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,5 +45,15 @@ public class UserzCommandService {
         userzToken.setExpiryTimestamp(now.plusHours(2));
 
         return userzTokenRepository.save(userzToken);
+    }
+
+    public Userz createUserz(Userz userz) {
+        return userzRepository.save(userz);
+    }
+
+    public Optional<Userz> activateUser(String username, boolean isActive) {
+        userzRepository.activateUser(username, isActive);
+
+        return userzRepository.findByUsernameIgnoreCase(username);
     }
 }
