@@ -43,7 +43,6 @@ public class 문제집 {
     }
 
     public static void main(String[] args) throws IOException {
-        // 난이도 순
         try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
             StringTokenizer st = new StringTokenizer(br.readLine());
 
