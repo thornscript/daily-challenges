@@ -35,9 +35,9 @@ public class 박스_채우기 {
         ans++;
         cube[idx]--;
 
-        solve(length - t, width, height);
-        solve(t, width, height - t);
-        solve(t, width - t, t);
+        solve(length, width, height - t);
+        solve(length, width - t, t);
+        solve(length - t, t, t);
     }
 
     public static void main(String[] args) {
